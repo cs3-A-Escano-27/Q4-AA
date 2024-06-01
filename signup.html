@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <title>ESCANO (Q4 AA)</title>
+  
+    <style>
+        body {
+            font-family: "Playfair Display", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAF9F6;
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            background-color: #FAF9F6;
+            padding: 20px;
+        }
+
+        .nav__content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .logo a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #98B0C4;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        nav .logo a:hover {
+            color: #7593AD;
+        }
+
+        nav .checkbox {
+            display: none;
+        }
+
+        nav input {
+            display: none;
+        }
+
+        nav .checkbox i {
+            font-size: 2rem;
+            color: #98B0C4;
+            cursor: pointer;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            list-style: none;
+            transition: left 0.3s;
+        }
+
+        ul li a {
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            text-decoration: none;
+            font-weight: 600;
+            color: #98B0C4;
+            transition: 0.3s;
+            color: #000000;
+        }
+
+        ul li a:hover {
+            border-top-color: #98B0C4;
+            border-bottom-color: #98B0C4;
+            color: #7593AD;
+        }
+
+        form {
+            border: 1px solid #ddd;
+            background-color: white;
+            padding: 20px;
+            width: 400px; 
+            margin: 100px auto 0 auto;
+            justify-content: center;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+            font-family: "Playfair Display", serif;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box; 
+        }
+
+        textarea {
+            resize: vertical; 
+        }
+
+        button {
+            font-family: "Playfair Display", serif;
+            background-color: #98B0C4;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px; 
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #5f768a;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .signin-title,
+        .signup-title,
+        .signin-link,
+        .signup-link {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav__content">
+            <div class="logo"><a href="#">AGEscano</a></div>
+            <label for="check" class="checkbox">
+                <i class="ri-menu-line"></i>
+            </label>
+            <input type="checkbox" name="check" id="check" />
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discoveries.html">Discoveries</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signup.html">Sign-Up</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div id="signup">
+        <h2 class="signup-title">Sign Up</h2>
+        <form id="signup-form">
+            <label>Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label>Preferred Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            
+            <label>Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            
+            <label>Confirm Password:</label>
+            <input type="password" id="confirmpassword" name="confirmpassword" required><br><br>
+            
+            <label>Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label>Address:</label>
+            <input type="text" id="address" name="address" required><br><br>
+            
+            <label>Interests (Brief Paragraph):</label><br>
+            <textarea id="interests" name="interests" rows="3" cols="30" required></textarea><br><br>
+
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+            <p class="signin-link">Already have an account? <a href="#" onclick="toggleForm()">Sign-In!</a></p>
+        </form>
+    </div>
+
+    <div id="signin" class="hide">
+        <h2 class="signin-title">Sign In</h2>
+        <form id="signin-form">
+            <label>Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label>Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+            <p class="signup-link">Do not have an account? <a href="#" onclick="toggleForm()">Sign-Up!</a></p>
+        </form>
+    </div>
+
+    <script>
+        function toggleForm() {
+            var signupForm = document.getElementById("signup");
+            var signinForm = document.getElementById("signin");
+
+            signupForm.classList.toggle("hide");
+            signinForm.classList.toggle("hide");
+        }
+    function saveFormData(formId) {
+        var formData = {};
+        var form = document.getElementById(formId).getElementsByTagName('input');
+        for (var i = 0; i < form.length; i++) {
+            formData[form[i].name] = form[i].value;
+        }
+        localStorage.setItem(formId, JSON.stringify(formData));
+    }
+
+    function retrieveFormData(formId) {
+        var formData = JSON.parse(localStorage.getItem(formId));
+        if (formData) {
+            var form = document.getElementById(formId).getElementsByTagName('input');
+            for (var i = 0; i < form.length; i++) {
+                form[i].value = formData[form[i].name];
+            }
+        }
+    }
+
+    document.getElementById("signup-form").addEventListener("submit", function(event) {
+        saveFormData("signup");
+    });
+
+    document.getElementById("signin-form").addEventListener("submit", function(event) {
+        saveFormData("signin");
+    });
+
+    window.onload = function() {
+        retrieveFormData("signup");
+        retrieveFormData("signin");
+    };
+
+    </script>
+
+</body>
+</html>

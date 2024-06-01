@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Playfair Display", sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.nav__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1.5rem 1rem;
+}
+
+nav .logo a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #98B0C4;
+  transition: 0.3s;
+}
+
+nav .logo a:hover {
+  color: #7593AD;
+}
+
+nav .checkbox {
+  display: none;
+}
+
+nav input {
+  display: none;
+}
+
+nav .checkbox i {
+  font-size: 2rem;
+  color: #98B0C4;
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  transition: left 0.3s;
+}
+
+ul li a {
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: 0.3s;
+}
+
+ul li a:hover {
+  border-top-color: #98B0C4;
+  border-bottom-color: #98B0C4;
+  color: #7593AD;
+}
+
+.section {
+  background-color: #FAF9F6;
+}
+
+.section__container {
+  min-height: 100vh;
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Playfair Display", sans-serif;
+}
+
+.subtitle {
+  letter-spacing: 2px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.title span {
+  font-weight: 600;
+}
+
+.description {
+  line-height: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.description span {
+  font-weight: 600;
+}
+
+.action__btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.image {
+  display: grid;
+  place-items: center;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto; 
+  border-radius: 0; 
+}
+
+.nav-button {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-button .btn {
+  width: 130px;
+  height: 40px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.nav-button .btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 750px) {
+  nav .checkbox {
+    display: block;
+  }
+  
+  ul {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 85px);
+    left: -100%;
+    top: 85px;
+    background-color: var(--extra-light);
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  nav #check:checked ~ ul {
+    left: 0;
+  }
+  
+  ul li a {
+    font-size: 1.25rem;
+  }
+  
+  .section__container {
+    padding: 10rem 1rem 5rem 1rem;
+    text-align: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .image {
+    grid-area: 1/1/2/2;
+  }
+  
+  .nav-button {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .nav-button .btn {
+    margin: 0.5rem 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .section__container {
+    padding: 8rem 1rem 3rem 1rem;
+  }
+}
+
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.scrollToTopBtn i {
+  font-size: 24px;
+}
+
+.scrollToTopBtn:hover {
+  background-color: #555;
+}
+
+.image img {
+  transition: transform 0.3s;
+}
+
+.image img:hover {
+  transform: scale(1.1);
+}
+
+#title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: .15em solid #98B0C4; 
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+  font-family: "Playfair Display", sans-serif;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color:#98B0C4; }
+}
